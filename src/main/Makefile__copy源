@@ -1,0 +1,25 @@
+xiaohua_objects = main.o http_sever.o save_data.o standard_c_interface.o sqlite3.o
+xiaohua_bin = web_sever
+
+$(xiaohua_bin):$(xiaohua_objects)
+	cc -o $(xiaohua_bin) $(xiaohua_objects) -pthread -ldl 
+
+main.0:http_sever.h
+
+http_sever.o:Debug.h http_sever.h standard_c_interface.h
+
+save_data.o:save_data.h Debug.h standard_c_interface.h sqlite3.h
+
+standard_c_interface.o:standard_c_interface.h Debug.h
+
+sqlite3.o:sqlite3.h sqlite3ext.h
+
+#shell.o:sqlite3ext.h
+
+
+
+.PHONY:clean
+clean:
+	-rm $(xiaohua_bin) $(xiaohua_objects)
+
+
