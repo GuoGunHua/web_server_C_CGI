@@ -30,3 +30,6 @@
 
 # Debug files
 *.dSYM/
+
+#数据库文件
+weibo.db
